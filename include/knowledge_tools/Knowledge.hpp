@@ -18,7 +18,7 @@ using namespace std::chrono_literals;
 
 class Knowledge {
 public:
-  explicit Knoeledge(const rclcpp::Node::SharedPtr &node);
+  explicit Knowledge(const rclcpp::Node::SharedPtr &node);
 
   // ============================================================
   // World State
