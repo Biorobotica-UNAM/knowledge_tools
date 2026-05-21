@@ -1,10 +1,10 @@
-#include "knowledge_tools/KNOWLEDGE.hpp"
+#include "knowledge_tools/Knowledge.hpp"
 
 // ============================================================
 // Constructor
 // ============================================================
 
-KNOWLEDGE::KNOWLEDGE(const rclcpp::Node::SharedPtr &node) : node_(node) {
+Knowledge::Knowledge(const rclcpp::Node::SharedPtr &node) : node_(node) {
 
   cb_group_clients_ =
       node_->create_callback_group(rclcpp::CallbackGroupType::Reentrant);
@@ -31,7 +31,7 @@ KNOWLEDGE::KNOWLEDGE(const rclcpp::Node::SharedPtr &node) : node_(node) {
 // GetWorldState
 // ============================================================
 
-json KNOWLEDGE::get_world_state(const std::string &category,
+json Knowledge::get_world_state(const std::string &category,
                                 const std::string &id,
                                 const std::string &attribute,
                                 std::chrono::seconds timeout) {
@@ -68,7 +68,7 @@ json KNOWLEDGE::get_world_state(const std::string &category,
 // UpdateWorldState
 // ============================================================
 
-bool KNOWLEDGE::update_world_state(const json &update,
+bool Knowledge::update_world_state(const json &update,
                                    std::chrono::seconds timeout) {
 
   auto request =
@@ -95,7 +95,7 @@ bool KNOWLEDGE::update_world_state(const json &update,
 // GetPhrase
 // ============================================================
 
-std::string KNOWLEDGE::get_phrase(const std::string &phrase,
+std::string Knowledge::get_phrase(const std::string &phrase,
                                   const std::string &context,
                                   std::chrono::seconds timeout) {
 

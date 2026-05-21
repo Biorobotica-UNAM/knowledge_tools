@@ -21,7 +21,7 @@ find_package(nlohmann_json REQUIRED)
 # ============================================================
 
 add_library(${PROJECT_NAME} SHARED
-  src/KNOWLEDGE.cpp
+  src/Knowledge.cpp
 )
 
 target_include_directories(${PROJECT_NAME}

@@ -16,9 +16,9 @@
 using json = nlohmann::json;
 using namespace std::chrono_literals;
 
-class KNOWLEDGE {
+class Knowledge {
 public:
-  explicit KNOWLEDGE(const rclcpp::Node::SharedPtr &node);
+  explicit Knoeledge(const rclcpp::Node::SharedPtr &node);
 
   // ============================================================
   // World State
