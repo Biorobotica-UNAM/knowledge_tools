@@ -13,15 +13,18 @@ KNOWLEDGE::KNOWLEDGE(const rclcpp::Node::SharedPtr &node) : node_(node) {
 
   get_world_state_client_ =
       node_->create_client<knowledge_interfaces::srv::GetWorldState>(
-          "/world/get_state", qos, cb_group_clients_);
+          "/knowledge/knowledge_manager/world/get_state", qos,
+          cb_group_clients_);
 
   update_world_state_client_ =
       node_->create_client<knowledge_interfaces::srv::UpdateWorldState>(
-          "/world/update_state", qos, cb_group_clients_);
+          "/knowledge/knowledge_manager/world/update_state", qos,
+          cb_group_clients_);
 
   get_phrase_client_ =
       node_->create_client<knowledge_interfaces::srv::GetPhrase>(
-          "/phrases/get_phrase", qos, cb_group_clients_);
+          "/knowledge/knowledge_manager/phrases/get_phrase", qos,
+          cb_group_clients_);
 }
 
 // ============================================================
