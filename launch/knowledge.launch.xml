@@ -1,0 +1,8 @@
+<launch>
+    <group>
+        <push_ros_namespace namespace="knowledge"/>
+        <!-- knowledge_manager -->
+        <include file="$(find-pkg-share knowledge_manager)/launch/knowledge_manager.launch.xml"/>
+    </group>
+
+</launch>
