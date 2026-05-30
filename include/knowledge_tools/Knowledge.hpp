@@ -29,7 +29,9 @@ public:
                        const std::string &attribute = "",
                        std::chrono::seconds timeout = 5s);
 
-  bool update_world_state(const json &update,
+  bool update_world_state(const std::string &category, const std::string &id,
+                          const std::string &attribute,
+                          const std::string &value,
                           std::chrono::seconds timeout = 5s);
 
   // ============================================================
