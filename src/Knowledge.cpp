@@ -9,8 +9,9 @@ Knowledge::Knowledge(const rclcpp::Node::SharedPtr &node) : node_(node) {
   cb_group_clients_ =
       node_->create_callback_group(rclcpp::CallbackGroupType::Reentrant);
 
-  // Guys, please. Make sure the code compiles with ROS 2 Humble too. We talked about this!!!
-  //const rclcpp::QoS qos = rclcpp::ServicesQoS();
+  // Guys, please. Make sure the code compiles with ROS 2 Humble too. We talked
+  // about this!!!
+  // const rclcpp::QoS qos = rclcpp::ServicesQoS();
   const rmw_qos_profile_t qos = rmw_qos_profile_services_default;
 
   get_world_state_client_ =
@@ -70,13 +71,19 @@ json Knowledge::get_world_state(const std::string &category,
 // UpdateWorldState
 // ============================================================
 
-bool Knowledge::update_world_state(const json &update,
+bool Knowledge::update_world_state(const std::string &category,
+                                   const std::string &id,
+                                   const std::string &attribute,
+                                   const std::string &value,
                                    std::chrono::seconds timeout) {
 
   auto request =
       std::make_shared<knowledge_interfaces::srv::UpdateWorldState::Request>();
 
-  request->json = update.dump(2);
+  request->category = category;
+  request->id = id;
+  request->attribute = attribute;
+  request->value = value;
 
   bool success = false;
 
@@ -84,7 +91,6 @@ bool Knowledge::update_world_state(const json &update,
       update_world_state_client_, request,
       [&](auto response) {
         success = response->success;
-
         RCLCPP_INFO(node_->get_logger(), "UpdateWorldState %s: %s",
                     success ? "OK" : "FAILED", response->message.c_str());
       },
